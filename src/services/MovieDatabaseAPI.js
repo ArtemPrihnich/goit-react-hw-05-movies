@@ -8,8 +8,18 @@ async function trendingMovies() {
     return responce
 }
 
+async function getMovieDetails(id) {
+    const responce = await axios.get(`${URL}/movie/${id}?api_key=${KEY}`)
+    return responce
+}
+
+// async function getMovieImage(id) {
+//     const responce = await axios.get(`${URL}/movie/${id}/images?api_key=${KEY}&language=en-US`)
+// }
+
 const api = {
-    trendingMovies
+    trendingMovies,
+    getMovieDetails
 }
 
 export default api

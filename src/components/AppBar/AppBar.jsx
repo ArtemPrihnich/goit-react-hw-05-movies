@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 export default function AppBar() {
     const navItems = [
-        { href: 'home', text: 'Home' },
+        { href: '/', text: 'Home' },
         { href: 'movies', text: 'Movies' }
     ]
 
