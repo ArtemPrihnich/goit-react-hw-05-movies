@@ -1,11 +1,11 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 
 export default function HomeGalleryItem({ movieInfo }) {
+    const location = useLocation()
     return (
         <li>
-            {/* {console.log(movieInfo)} */}
-            <NavLink to={`/movies/${movieInfo.id}`}>{movieInfo.title}</NavLink>
+            <NavLink to={`/movies/${movieInfo.id}`} state={{ from: location }}>{movieInfo.title}</NavLink>
         </li>
     )
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-export default function SearchForm({ onSubmit }) {
-    const [name, setName] = useState('')
+export default function SearchForm({ value, onSubmit }) {
+    const [name, setName] = useState(value)
 
     const handleChange = (e) => {
         const { name, value } = e.currentTarget

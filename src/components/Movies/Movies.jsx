@@ -3,40 +3,38 @@ import SearchForm from 'pages/SearchForm/SearchForm'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useSearchParams } from 'react-router-dom'
 import movieAPI from '../../services/MovieDatabaseAPI'
 
 export default function Movies() {
-    const [input, setInput] = useState('')
-    const [storage, setStorage] = useState([])
+    const [searchParams, setSearchParams] = useSearchParams()
+    const query = searchParams.get('query') ?? ''
+    const [storage, setStorage] = useState(null)
+
 
     useEffect(() => {
         async function foo() {
-            if (input === '') {
+            if (!query) {
                 return
             }
 
-            const res = await movieAPI.getMovieList(input)
-            setStorage((prevStorage) => {
-                console.log(res)
-                return [...prevStorage, ...res.data.results]
+            const res = await movieAPI.getMovieList(query)
+            setStorage(() => {
+                console.log(query)
+                return [...res.data.results]
             })
         }
         foo()
-    }, [input])
+    }, [query])
 
     const handleFormSubmit = (inputValue) => {
-        if (inputValue === input) {
-            return
-        }
-        setInput(inputValue)
+        setSearchParams(inputValue !== '' ? { query: inputValue } : {})
     }
 
     return (
         <div>
-            {storage && console.log(storage)}
-            {<SearchForm onSubmit={handleFormSubmit} />}
-            {storage.length > 0 && <MoviesSearchList data={storage} />}
+            {<SearchForm value={query} onSubmit={handleFormSubmit} />}
+            {storage && <MoviesSearchList data={storage} />}
             <Outlet />
         </div>
     )

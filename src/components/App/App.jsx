@@ -30,11 +30,10 @@ export const App = () => {
         <Route path='/' element={<Home />}>
           {/* <Route path="movies/:movieId" element={<div>test</div>} /> */}
         </Route>
-        <Route path="movies" element={<Movies />} >
-          <Route path=":movieId" element={<MovieInfo />}>
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
-          </Route>
+        <Route path="movies" element={<Movies />} />
+        <Route path="movies/:movieId" element={<MovieInfo />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
       </Route>
     </Routes>
