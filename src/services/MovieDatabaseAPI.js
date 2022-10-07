@@ -13,13 +13,27 @@ async function getMovieDetails(id) {
     return responce
 }
 
-// async function getMovieImage(id) {
-//     const responce = await axios.get(`${URL}/movie/${id}/images?api_key=${KEY}&language=en-US`)
-// }
+async function getCastInformation(id) {
+    const responce = await axios.get(`${URL}/movie/${id}/credits?api_key=${KEY}&language=en-US`)
+    return responce
+}
+
+async function getReviews(id) {
+    const responce = await axios.get(`${URL}/movie/${id}/reviews?api_key=${KEY}&language=en-US&page=1`)
+    return responce
+}
+
+async function getMovieList(name) {
+    const responce = await axios.get(`${URL}/search/movie?api_key=${KEY}&language=en-US&query=${name}&page=1&include_adult=false`)
+    return responce
+}
 
 const api = {
     trendingMovies,
-    getMovieDetails
+    getMovieDetails,
+    getCastInformation,
+    getReviews,
+    getMovieList
 }
 
 export default api

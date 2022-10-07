@@ -1,8 +1,10 @@
 import Home from "components/Home/Home";
 import Layout from "components/Layout/Layout";
-import MovieInfo from "components/MovieInfo/MovieInfo";
+import MovieInfo from "../../pages/MovieInfo/MovieInfo";
 import Movies from "components/Movies/Movies";
 import { Route, Routes } from "react-router-dom";
+import Cast from "pages/Cast/Cast";
+import Reviews from "pages/Reviews/Reviews";
 // import movieAPI from '../../services/MovieDatabaseAPI'
 // import { useEffect, useState } from 'react'
 
@@ -29,7 +31,10 @@ export const App = () => {
           {/* <Route path="movies/:movieId" element={<div>test</div>} /> */}
         </Route>
         <Route path="movies" element={<Movies />} >
-          <Route path=":movieId" element={<MovieInfo />} />
+          <Route path=":movieId" element={<MovieInfo />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
         </Route>
       </Route>
     </Routes>

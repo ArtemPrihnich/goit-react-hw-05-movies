@@ -1,7 +1,9 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { Outlet, useParams } from 'react-router-dom'
 import movieAPI from '../../services/MovieDatabaseAPI'
 import { useEffect, useState } from 'react'
+import MovieInfoItem from 'components/MovieInfoItem/MovieInfoItem'
+import AdditionalInformation from 'components/AdditionalInformation/AdditionalInformation'
 
 export default function MovieInfo() {
     const { movieId } = useParams()
@@ -27,12 +29,9 @@ export default function MovieInfo() {
     }
     return (
         <div>
-            <img src={storage.poster_path} alt={storage.title} />
-            <p>{storage.title}</p>
-            <p>{storage.relise}</p>
-            <p>{storage.vote_average}</p>
-            <p>{storage.status}</p>
-            {console.log(storage)}
+            <MovieInfoItem data={storage} />
+            <AdditionalInformation />
+            <Outlet movieId={movieId} />
         </div>
     )
 }
