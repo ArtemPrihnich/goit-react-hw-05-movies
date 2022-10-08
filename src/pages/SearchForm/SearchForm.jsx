@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Button, Form, Input } from './SearchForm.styled';
 
 export default function SearchForm({ value, onSubmit }) {
     const [name, setName] = useState(value)
@@ -20,17 +21,16 @@ export default function SearchForm({ value, onSubmit }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
+        <Form onSubmit={handleSubmit}>
+            <Input
                 type="text"
                 name="name"
                 value={name}
                 pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                // required
                 autoComplete='off'
                 onChange={handleChange}
             />
-            <button type='submit'>Find Movie</button>
-        </form>
+            <Button type='submit'>Find Movie</Button>
+        </Form>
     )
 }

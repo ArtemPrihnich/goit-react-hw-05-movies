@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { Outlet, useSearchParams } from 'react-router-dom'
 import movieAPI from '../../services/MovieDatabaseAPI'
+import { Box } from './Movie.styled'
 
 export default function Movies() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -31,12 +32,12 @@ export default function Movies() {
     }
 
     return (
-        <div>
+        <Box>
             {<SearchForm value={query} onSubmit={handleFormSubmit} />}
             {storage && <MoviesSearchList data={storage} />}
             <Suspense>
                 <Outlet />
             </Suspense>
-        </div>
+        </Box>
     )
 }

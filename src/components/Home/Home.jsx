@@ -3,6 +3,7 @@ import movieAPI from '../../services/MovieDatabaseAPI'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import HomeGallery from 'components/HomeGallery/HomeGallery'
+import { Box, Title } from './Home.styled'
 
 export default function Home({ responce }) {
     const [storage, setStorage] = useState(null)
@@ -20,9 +21,9 @@ export default function Home({ responce }) {
         foo()
     }, [])
     return (
-        <div>
-            <h1>Top movies for today</h1>
+        <Box>
+            <Title>Top movies for today</Title>
             {storage && <HomeGallery data={storage} />}
-        </div>
+        </Box>
     )
 }

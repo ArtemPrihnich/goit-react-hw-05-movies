@@ -1,14 +1,15 @@
+import { List } from 'components/HomeGallery/HomeGallery.styled'
 import React from 'react'
 import HomeGalleryItem from '../HomeGalleryItem/HomeGalleryItem'
 
 export default function MoviesSearchList({ data }) {
     return (
-        <ul>
+        <List>
             {data.map((item) => {
                 return (
                     <HomeGalleryItem key={item.id} movieInfo={item} />
                 )
             })}
-        </ul>
+        </List>
     )
 }

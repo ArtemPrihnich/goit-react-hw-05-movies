@@ -1,19 +1,20 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
+import { Header, Nav, NavigLink } from './AppBar.styled'
 
 export default function AppBar() {
     const navItems = [
-        { href: '/', text: 'Home' },
+        { href: `/`, text: 'Home' },
         { href: 'movies', text: 'Movies' }
     ]
 
     return (
-        <header>
-            <nav>
+        <Header>
+            <Nav>
                 {navItems.map(({ href, text }) => {
-                    return <NavLink to={href} key={href}>{text}</NavLink>
+                    return <NavigLink to={href} key={href}>{text}</NavigLink>
                 })}
-            </nav>
-        </header>
+            </Nav>
+        </Header>
     )
 }
