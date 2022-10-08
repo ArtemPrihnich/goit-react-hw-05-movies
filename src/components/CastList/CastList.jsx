@@ -7,7 +7,7 @@ export default function CastList({ data }) {
             {console.log(data)}
             {data.map((item) => {
                 return (
-                    <CastListItem key={item.id} data={item} />
+                    <CastListItem key={item.cast_id} data={item} />
                 )
             })}
         </ul>

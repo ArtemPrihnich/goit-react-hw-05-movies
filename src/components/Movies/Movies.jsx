@@ -1,6 +1,6 @@
 import MoviesSearchList from 'components/MoviesSearchList/MoviesSearchList'
 import SearchForm from 'pages/SearchForm/SearchForm'
-import React from 'react'
+import React, { Suspense } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { Outlet, useSearchParams } from 'react-router-dom'
@@ -20,7 +20,6 @@ export default function Movies() {
 
             const res = await movieAPI.getMovieList(query)
             setStorage(() => {
-                console.log(query)
                 return [...res.data.results]
             })
         }
@@ -35,7 +34,9 @@ export default function Movies() {
         <div>
             {<SearchForm value={query} onSubmit={handleFormSubmit} />}
             {storage && <MoviesSearchList data={storage} />}
-            <Outlet />
+            <Suspense>
+                <Outlet />
+            </Suspense>
         </div>
     )
 }

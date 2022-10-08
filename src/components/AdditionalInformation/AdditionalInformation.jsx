@@ -1,7 +1,8 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 
 export default function AdditionalInformation() {
+    const location = useLocation()
     const navItems = [
         { href: 'cast', text: 'Cast' },
         { href: 'reviews', text: 'Reviews' }
@@ -9,7 +10,7 @@ export default function AdditionalInformation() {
 
     return (
         <div>
-            {navItems.map(({ href, text }) => <NavLink to={href} key={href}>{text}</NavLink>)}
+            {navItems.map(({ href, text }) => <NavLink to={href} state={{ from: location.state?.from }} key={href}>{text}</NavLink>)}
         </div>
     )
 }

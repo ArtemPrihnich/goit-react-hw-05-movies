@@ -1,18 +1,16 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
 
 export default function MovieInfoItem({ data }) {
-    const location = useLocation()
-    console.log(location.state.from)
-    const { poster_path, title, relise, vote_average, status } = data
+    const { poster_path, title, status, vote_average, overview, genres, release_date } = data
     return (
         <div>
-            <Link to={location.state.from}>Go back</Link>
-            <img src={poster_path} alt={title} />
-            <p>{title}</p>
-            <p>{relise}</p>
-            <p>{vote_average}</p>
-            <p>{status}</p>
+            <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} width='300' />
+            <h1>{title}</h1>
+            <p>Release Date: {new Date(release_date).toLocaleDateString()}</p>
+            <p>Rating: {`${Number(vote_average).toFixed(1)}/10`}</p>
+            <p>Overview: <span>{overview}</span></p>
+            <div>Genres:{genres.map(({ name, id }) => <span key={id}>{name}</span>)}</div>
+            <p>Status: <span>{status}</span></p>
         </div>
     )
 }

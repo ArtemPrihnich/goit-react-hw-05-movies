@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Outlet, useParams } from 'react-router-dom'
 import movieAPI from '../../services/MovieDatabaseAPI'
 import { useEffect, useState } from 'react'
 import MovieInfoItem from 'components/MovieInfoItem/MovieInfoItem'
 import AdditionalInformation from 'components/AdditionalInformation/AdditionalInformation'
+import ButtonGoBack from 'components/ButtonGoBack'
 
 export default function MovieInfo() {
     const { movieId } = useParams()
@@ -16,7 +17,6 @@ export default function MovieInfo() {
                 setStorage(() => {
                     return { ...res.data }
                 })
-                // console.log(res)
             } catch (error) {
                 console.log(error)
             }
@@ -29,9 +29,12 @@ export default function MovieInfo() {
     }
     return (
         <div>
+            <ButtonGoBack />
             <MovieInfoItem data={storage} />
             <AdditionalInformation />
-            <Outlet movieId={movieId} />
+            <Suspense fallback={<h1>LOADING...</h1>}>
+                <Outlet />
+            </Suspense>
         </div>
     )
 }

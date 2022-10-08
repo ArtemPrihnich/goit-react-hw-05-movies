@@ -25,7 +25,8 @@ export default function Cast() {
 
     return (
         <div>
-            {storage && <CastList data={storage} />}
+            {storage?.length === 0 && <div>No informatiob about cast</div>}
+            {storage?.length > 0 && <CastList data={storage} />}
         </div>
     )
 }

@@ -14,7 +14,6 @@ export default function Reviews() {
             try {
                 const res = await movieAPI.getReviews(movieId)
                 setStorage(() => {
-                    console.log(res)
                     return [...res.data.results]
                 })
             } catch (error) {
