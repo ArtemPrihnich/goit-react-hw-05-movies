@@ -1,4 +1,5 @@
 import CastList from 'components/CastList/CastList'
+import CastNotify from 'components/CastNotify/CastNotify'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -25,7 +26,7 @@ export default function Cast() {
 
     return (
         <div>
-            {storage?.length === 0 && <div>No informatiob about cast</div>}
+            {storage?.length === 0 && <CastNotify />}
             {storage?.length > 0 && <CastList data={storage} />}
         </div>
     )

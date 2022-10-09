@@ -1,3 +1,4 @@
+import ReviewNotify from 'components/ReviewNotify/ReviewNotify'
 import ReviewsList from 'components/ReviewsList/ReviewsList'
 import React from 'react'
 import { useEffect } from 'react'
@@ -25,7 +26,7 @@ export default function Reviews() {
     return (
         <div>
             {storage?.length > 0 && <ReviewsList data={storage} />}
-            {storage?.length === 0 && <div>No one review found</div>}
+            {storage?.length === 0 && <ReviewNotify />}
         </div>
     )
 }

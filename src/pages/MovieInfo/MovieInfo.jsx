@@ -4,7 +4,8 @@ import movieAPI from '../../services/MovieDatabaseAPI'
 import { useEffect, useState } from 'react'
 import MovieInfoItem from 'components/MovieInfoItem/MovieInfoItem'
 import AdditionalInformation from 'components/AdditionalInformation/AdditionalInformation'
-import ButtonGoBack from 'components/ButtonGoBack'
+import ButtonGoBack from 'components/BattonGoBack/ButtonGoBack'
+import { Box } from './MovieInfo.styled'
 
 export default function MovieInfo() {
     const { movieId } = useParams()
@@ -28,13 +29,13 @@ export default function MovieInfo() {
         return
     }
     return (
-        <div>
+        <Box>
             <ButtonGoBack />
             <MovieInfoItem data={storage} />
             <AdditionalInformation />
             <Suspense fallback={<h1>LOADING...</h1>}>
                 <Outlet />
             </Suspense>
-        </div>
+        </Box>
     )
 }

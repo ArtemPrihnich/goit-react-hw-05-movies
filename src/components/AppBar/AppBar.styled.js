@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom'
 
 export const Header = styled.header`
     display: block;
-    border-bottom: 1px solid black;
+    border-bottom: ${props => `1px solid ${props.theme.colors.black}`};
+    background-color: ${props => props.theme.colors.headerbgc};
 `;
 
 export const Nav = styled.nav`
@@ -17,7 +18,7 @@ export const NavigLink = styled(NavLink)`
     margin-right: 15px;
     text-decoration: none;
     font-size: 20px;
-    color: black;
+    color: ${props => props.theme.colors.primaryTextColor};
     transition: transform 250ms;
 
     &:last-child {
@@ -25,8 +26,7 @@ export const NavigLink = styled(NavLink)`
     }
 
     &:hover{
-        color: blue;
+        color: ${props => props.theme.colors.secondaryTextColor};;
         transform: scale(1.1);
     }
-
-`
+`;

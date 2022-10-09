@@ -7,4 +7,5 @@ export const Box = styled.div`
 
 export const Title = styled.h1`
     margin: 0 0 0 15px;
+    color: ${props => props.theme.colors.white};
 `

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 export const Item = styled.li`
     display: inline-block;
-    max-width: 300px;
     padding: 0;
     margin-bottom: 5px;
 
@@ -16,12 +15,15 @@ export const URL = styled(Link)`
     display: inline-block;
     padding: 10px;
     text-decoration: none;
-    color: black;
+    color: ${props => props.theme.colors.white};
     font-size: 18px;
-    transition: 250ms;
+    transition-property: transform, color;
+    transition-duration:  250ms;
 
     &:hover {
-        color: blue;
+        color: ${props => props.theme.colors.secondaryTextColor};
+        border: ${props => `1px solid ${props.theme.colors.secondaryTextColor}`};
+        border-radius: 10px;
         transform: scale(1.1)
     }
 `
