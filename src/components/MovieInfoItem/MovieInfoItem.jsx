@@ -1,6 +1,6 @@
 import React from 'react'
 import { ImgBox, Container, Genres, GenresBox, IMG, InfoContainer, Overview, Rating, ReleaseDate, Status, StatusInfo, Title, OverviewText } from './MoviInfoItem.styled'
-
+import PropTypes from 'prop-types'
 export default function MovieInfoItem({ data }) {
     const { poster_path, title, status, vote_average, overview, genres, release_date } = data
     return (
@@ -16,4 +16,21 @@ export default function MovieInfoItem({ data }) {
             </InfoContainer>
         </Container>
     )
+}
+
+MovieInfoItem.propTypes = {
+    data: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        poster_path: PropTypes.string.isRequired,
+        status: PropTypes.string.isRequired,
+        vote_average: PropTypes.number.isRequired,
+        overview: PropTypes.string,
+        genres: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.number,
+                name: PropTypes.string,
+            })
+        ),
+        release_date: PropTypes.string.isRequired,
+    })
 }

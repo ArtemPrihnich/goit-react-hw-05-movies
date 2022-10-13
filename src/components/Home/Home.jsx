@@ -5,7 +5,7 @@ import { useState } from 'react'
 import HomeGallery from 'components/HomeGallery/HomeGallery'
 import { Box, Title } from './Home.styled'
 
-export default function Home({ responce }) {
+export default function Home() {
     const [storage, setStorage] = useState(null)
     useEffect(() => {
         async function foo() {

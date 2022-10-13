@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Button, Form, Input } from './SearchForm.styled';
+import PropTypes from 'prop-types'
 
 export default function SearchForm({ value, onSubmit }) {
     const [name, setName] = useState(value)
@@ -33,4 +34,9 @@ export default function SearchForm({ value, onSubmit }) {
             <Button type='submit'>Find Movie</Button>
         </Form>
     )
+}
+
+SearchForm.propTypes = {
+    value: PropTypes.string,
+    onSubmit: PropTypes.func.isRequired,
 }
